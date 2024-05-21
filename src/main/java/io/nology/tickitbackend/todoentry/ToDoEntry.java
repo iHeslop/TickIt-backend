@@ -14,6 +14,9 @@ public class ToDoEntry extends BaseEntity{
     @Column
     private String title;
 
+    @Column
+    private boolean completed = false;
+
     ToDoEntry() {}
 
     public void setContent(String content) {
@@ -24,12 +27,20 @@ public class ToDoEntry extends BaseEntity{
         this.title = title;
     }
 
-      public String getTitle() {
+     public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public String getTitle() {
         return title;
     }
 
     public String getContent() {
         return content;
+    }
+
+    public boolean getCompleted() {
+        return completed;
     }
 
 }

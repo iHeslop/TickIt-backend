@@ -19,6 +19,7 @@ public class ToDoEntryService {
         ToDoEntry newEntry = new ToDoEntry();
         newEntry.setContent(data.getContent().trim());
         newEntry.setTitle(data.getTitle().trim());
+        newEntry.setCompleted(false);
         return this.repo.save(newEntry);
     }
 
@@ -48,6 +49,7 @@ public class ToDoEntryService {
         ToDoEntry foundEntry = maybeEntry.get();
         foundEntry.setContent(data.getContent().trim());
         foundEntry.setTitle(data.getTitle().trim());
+         foundEntry.setCompleted(data.getCompleted()); 
         ToDoEntry updatedEntry = this.repo.save(foundEntry);
         return Optional.of(updatedEntry);
     }
