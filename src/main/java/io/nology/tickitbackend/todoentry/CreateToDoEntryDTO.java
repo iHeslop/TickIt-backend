@@ -3,7 +3,6 @@ package io.nology.tickitbackend.todoentry;
 import jakarta.validation.constraints.NotBlank;
 
 public class CreateToDoEntryDTO {
-    @NotBlank
     private String content;
 
     @NotBlank
