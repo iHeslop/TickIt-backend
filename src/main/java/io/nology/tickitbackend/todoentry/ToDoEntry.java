@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "todo_entries")
-public class ToDoEntry extends BaseEntity{
+public class ToDoEntry extends BaseEntity {
     @Column(columnDefinition = "LONGTEXT")
     private String content;
 
@@ -17,7 +17,8 @@ public class ToDoEntry extends BaseEntity{
     @Column
     private boolean completed = false;
 
-    ToDoEntry() {}
+    ToDoEntry() {
+    }
 
     public void setContent(String content) {
         this.content = content;
@@ -27,7 +28,7 @@ public class ToDoEntry extends BaseEntity{
         this.title = title;
     }
 
-     public void setCompleted(boolean completed) {
+    public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 
@@ -41,6 +42,15 @@ public class ToDoEntry extends BaseEntity{
 
     public boolean getCompleted() {
         return completed;
+    }
+
+    @Override
+    public String toString() {
+        return "ToDoEntry{" +
+                "content='" + content + '\'' +
+                ", title='" + title + '\'' +
+                ", completed=" + completed +
+                '}';
     }
 
 }
