@@ -36,27 +36,82 @@ Backend:
 
 ## Build Steps
 
-1. Clone the repository:
 
+**1. Install and configure prerequisites:**
+
+- Java Development Kit: https://www.oracle.com/au/java/technologies/downloads/
+- Apache Maven: https://maven.apache.org/download.cgi
+- MySQL: https://dev.mysql.com/downloads/installer/
+
+**2. Clone the repository and navigate into the project directory:**
+
+```bash
+git clone https://github.com/iHeslop/TickIt-backend.git
 ```
-npm install
+```bash
+cd TickIt-backend
+```
+**3. Set up the database:**
+
+- Log in to MySQL (can also be done within the MySQL workbench)
+
+```bash
+mysql -u root -p
 ```
 
-```
-npm run dev
+- Create a new database:
+
+```sql
+CREATE DATABASE your_database_name;
 ```
 
-**Note:** To use this application correctly, you must have the backend and database setup and running correctly. 
-The link to the backend repository: https://github.com/iHeslop/TickIt-backend
+**4. Configure the application properties:**
+
+- Navigate to the src/main/resources directory
+
+- Create an **application.properties** file and add the following configuration:
+
+```properties
+spring.application.name=tickit-backend
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/your_database_name
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
+```
+
+**5. Install Dependencies:**
+
+```sh
+mvn clean install
+```
+
+**6. Run the application:**
+
+- Use the following command to run the application:
+
+```sh
+mvn spring-boot:run
+```
+
+**7. The application should now be up and running:**
+
+- Navigate to http://localhost:8080/entries to check if its working.
+
+**8. View Swagger Documentation:**
+
+- Navigate to http://localhost:8080/swagger-ui/index.html to view Swagger documentation.
+
+**Note:** To use this application with the frontend, you must have the frontend setup and running correctly. 
+The link to the frontend repository: https://github.com/iHeslop/TickIt-frontend
 
 ---
 
 ## Design Goals / Approach
 
-- I wanted TickIt to be a minimalistic and efficient application, which smoothly and cohesively allows the user to add, update and delete entries easily.
-- I wanted to integrate toast notifications as efficiently as possible to relay messages to the user easily and simply.
-- Whilst the concept of this application is relatively simple, I wanted to use clean coding practices as much as possible, including using contexts where necessary instead of prop drilling, as well as having organized and well thought out components that are easy to scale and update/change in the future if add any extra features.
-- Wanted to keep the whole application as a SPA, for ease of user use and functionality. 
+- I wanted the application to function as expected, with complete CRUD operations from the frontend to database.
+- Correct and efficient error-handling, so that the application can run and function as required.
+- I wanted to incorporate logging into the application structure, so that i had clear details of what my application was doing at all times (using Log4j).
+- Use of Swagger to generate API documentation for ease of use. 
 
 ---
 
@@ -64,24 +119,19 @@ The link to the backend repository: https://github.com/iHeslop/TickIt-backend
 
 - **Create Entries:** Ability to create a to-entry.
 - **Update and Delete:** Ability to update and delete to-do entries.
-- **Toast Notifications:** Updates on the backend are passed onto the user through toast notifications, to enhance overall user experience. (e.g. "To-do Entry deleted")
-- **Incomplete/Completed Tabs:** To-do entries are filtered into those that have been completed and those that haven't, so users can keep track of completed entries, as well as easily display the incomplete entries. 
-- **Testing:** In-depth testing of each component, to make sure the application functions and works as intended. 
-- **Design and Aesthetic:** Simple minimalistic design for ease of user use as well as for overall aesthetic and design.
+- **Logging:** Updates, errors and changes in the backend are logged to the command line while running the application.
+- **Error-Handling:** Errors return the correct status and messages back to the user. 
+- **Swagger:** Swagger-UI incorporated for API documentation. Allows for a simple and easy documentation of how to operate the API.
 
 ---
 
 ## Technologies:
 
-- **React**
-- **TypeScript**
-- **SCSS**
-
----
-
-## Known issues
-
-- If backend fails then the application does not function. Reliant on the backend and database to be set up and operating correctly to work.
+- **Java**
+- **SpringBoot**
+- **MySQL**
+- **Swagger**
+- **Log4j**
 
 ---
 
@@ -91,21 +141,19 @@ The link to the backend repository: https://github.com/iHeslop/TickIt-backend
 - More in-depth sort and filtering systems
 - Add categories to the entries
 - User Authentication
-- Pagination (rather than scrolling)
-- Mobile Responsive Design
 - Deploy application
 
 ---
 
 ## Struggles
 
-- Management of state and context, being an SPA, making sure everything updated and displayed correctly.
-- Passing user information from the backend in the frontend. 
+- Struggle setting up swagger correctly, had issues with the correct dependencies.
+- Incorporation of proper logging to the console. 
 
 ---
 
 ## More Information
 
-- This project is paired with the backend repository: https://github.com/iHeslop/TickIt-backend
+- This project is paired with the frontend repository: https://github.com/iHeslop/TickIt-frontend
 
 ---
