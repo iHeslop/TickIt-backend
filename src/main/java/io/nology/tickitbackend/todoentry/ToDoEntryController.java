@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import io.nology.tickitbackend.exceptions.BadRequestException;
 import io.nology.tickitbackend.exceptions.NotFoundException;
 import io.nology.tickitbackend.exceptions.ServiceValidationException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -32,6 +34,8 @@ public class ToDoEntryController {
     @Autowired
     private ToDoEntryService toDoEntryService;
 
+    @Tag(name = "POST", description = "POST methods of todo API")
+    @Operation(summary = "Create a new Todo entry", description = "Create a new Todo entry. The response is a new Todo object with title, content, date created, last updated date and completed properties.")
     @PostMapping()
     public ResponseEntity<ToDoEntry> createEntry(@Valid @RequestBody CreateToDoEntryDTO data)
             throws BadRequestException {
@@ -47,6 +51,8 @@ public class ToDoEntryController {
         }
     }
 
+    @Tag(name = "GET", description = "GET methods of todo API")
+    @Operation(summary = "Get all Todo entries", description = "Get all Todo entries. The response is a List of Todo objects with title, content, date created, last updated date and completed properties.")
     @GetMapping()
     public ResponseEntity<List<ToDoEntry>> findAllEntries() {
         List<ToDoEntry> allEntries = this.toDoEntryService.findAllEntries();
@@ -54,6 +60,8 @@ public class ToDoEntryController {
         return new ResponseEntity<>(allEntries, HttpStatus.OK);
     }
 
+    @Tag(name = "GET", description = "GET methods of todo API")
+    @Operation(summary = "Get Todo Entry by ID", description = "Get a single Todo entry by ID. The response is a new Todo object with title, content, date created, last updated date and completed properties.")
     @GetMapping("/{id}")
     public ResponseEntity<ToDoEntry> findEntryById(@PathVariable Long id) throws NotFoundException {
         Optional<ToDoEntry> maybeEntry = this.toDoEntryService.findById(id);
@@ -62,6 +70,8 @@ public class ToDoEntryController {
         return new ResponseEntity<>(foundEntry, HttpStatus.OK);
     }
 
+    @Tag(name = "PATCH", description = "PATCH methods of todo API")
+    @Operation(summary = "Update a Todo entry", description = "Update a Todo entry by ID. The response is an updated Todo object with title, content, date created, last updated date and completed properties.")
     @PatchMapping("/{id}")
     public ResponseEntity<ToDoEntry> updatedEntryById(@PathVariable Long id,
             @Valid @RequestBody UpdateToDoEntryDTO data) throws NotFoundException {
@@ -71,6 +81,8 @@ public class ToDoEntryController {
         return new ResponseEntity<>(updatedEntry, HttpStatus.OK);
     }
 
+    @Tag(name = "DELETE", description = "DELETE methods of todo API")
+    @Operation(summary = "Delete a Todo entry", description = "Delete a Todo entry by ID. The response is a HTTP status.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEntryById(@PathVariable Long id) throws NotFoundException {
         boolean isDeleted = this.toDoEntryService.deleteById(id);
