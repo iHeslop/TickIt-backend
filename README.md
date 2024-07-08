@@ -2,17 +2,17 @@
 
 ## Description / Requirements
 
-TickIt is a fully functional to-do list application, with the ability to create, update and delete to-do entries, as well as the ability to "tickit" off and mark the task as completed. The application was built using a React TypeScript frontend, with a Java SpringBoot backend and a MySQL database. 
+TickIt is a fully functional to-do list application, with the ability to create, update and delete to-do entries, as well as the ability to "tickit" off and mark the task as completed. The application was built using a React TypeScript frontend, with a Java SpringBoot backend and a MySQL database.
 
 With this project, the plan was to practice and implement how to:
 
-- Create and implement all parts of a functional fullstack application. 
+- Create and implement all parts of a functional fullstack application.
 - Use SpringBoot to act as a backend between a MySQL database and a React TypeScript frontend.
 - Use React TypeScript as a frontend framework.
 - Handle errors in both the front and backends correctly and efficiently.
 - Perform CRUD operations in a fullstack format.
-- Integrate React-Testing Library to test the frontend functionality. 
-- Integrate Swagger-UI and Log4j into the backend, for better developer and user experience, as well as accurate and useful documentation. 
+- Integrate React-Testing Library to test the frontend functionality.
+- Integrate Swagger-UI and Log4j into the backend, for better developer and user experience, as well as accurate and useful documentation.
 
 Project Requirements:
 
@@ -36,7 +36,6 @@ Backend:
 
 ## Build Steps
 
-
 **1. Install and configure prerequisites:**
 
 - Java Development Kit: https://www.oracle.com/au/java/technologies/downloads/
@@ -48,9 +47,11 @@ Backend:
 ```bash
 git clone https://github.com/iHeslop/TickIt-backend.git
 ```
+
 ```bash
 cd TickIt-backend
 ```
+
 **3. Set up the database:**
 
 - Log in to MySQL (can also be done within the MySQL workbench)
@@ -101,7 +102,7 @@ mvn spring-boot:run
 
 - Navigate to http://localhost:8080/swagger-ui/index.html to view Swagger documentation.
 
-**Note:** To use this application with the frontend, you must have the frontend setup and running correctly. 
+**Note:** To use this application with the frontend, you must have the frontend setup and running correctly.
 The link to the frontend repository: https://github.com/iHeslop/TickIt-frontend
 
 ---
@@ -111,7 +112,7 @@ The link to the frontend repository: https://github.com/iHeslop/TickIt-frontend
 - I wanted the application to function as expected, with complete CRUD operations from the frontend to database.
 - Correct and efficient error-handling, so that the application can run and function as required.
 - I wanted to incorporate logging into the application structure, so that i had clear details of what my application was doing at all times (using Log4j).
-- Use of Swagger to generate API documentation for ease of use. 
+- Use of Swagger to generate API documentation for ease of use.
 
 ---
 
@@ -120,7 +121,7 @@ The link to the frontend repository: https://github.com/iHeslop/TickIt-frontend
 - **Create Entries:** Ability to create a to-entry.
 - **Update and Delete:** Ability to update and delete to-do entries.
 - **Logging:** Updates, errors and changes in the backend are logged to the command line while running the application.
-- **Error-Handling:** Errors return the correct status and messages back to the user. 
+- **Error-Handling:** Errors return the correct status and messages back to the user.
 - **Swagger:** Swagger-UI incorporated for API documentation. Allows for a simple and easy documentation of how to operate the API.
 
 ---
@@ -148,7 +149,8 @@ The link to the frontend repository: https://github.com/iHeslop/TickIt-frontend
 ## Struggles
 
 - Struggle setting up swagger correctly, had issues with the correct dependencies.
-- Incorporation of proper logging to the console. 
+- Incorporation of proper logging to the console.
+- Originally built using ModelMapper, but found that it was an over-complication of a simple solution for object mapping.
 
 ---
 

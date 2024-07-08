@@ -45,7 +45,7 @@ public class ToDoEntryController {
             logger.info("Entry created: " + createdEntry);
             return new ResponseEntity<>(createdEntry, HttpStatus.CREATED);
         } catch (ServiceValidationException e) {
-            logger.info("Error creating entry");
+            logger.error("Error creating entry");
             e.printStackTrace();
             throw new BadRequestException(e.generateMessage());
         }
@@ -87,7 +87,7 @@ public class ToDoEntryController {
     public ResponseEntity<Void> deleteEntryById(@PathVariable Long id) throws NotFoundException {
         boolean isDeleted = this.toDoEntryService.deleteById(id);
         if (!isDeleted) {
-            logger.info("Entry not found: " + id);
+            logger.error("Entry not found: " + id);
             throw new NotFoundException(ToDoEntry.class, id);
         }
         logger.info("Deleted Entry with id: " + id);
